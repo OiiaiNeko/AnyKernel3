@@ -1137,7 +1137,7 @@ jobs:
             if [ "${{ inputs.kernel_version }}" = "6.1" ]; then
               KMI_LOCAL="-${KMI_TAG}-g${GHASH}-${BID}-4k"
               sed -i "\$s|echo \"\$res\"|echo \"${KMI_LOCAL}\"|" ./scripts/setlocalversion 2>/dev/null || true
-              sed -i 's/CONFIG_MODULE_SIG=y/CONFIG_MODULE_SIG=n/g' ./arch/arm64/configs/gki_defconfig
+              sed -i 's/^CONFIG_MODULE_SIG=y$/# CONFIG_MODULE_SIG is not set/' ./arch/arm64/configs/gki_defconfig
               sed -i "/^CONFIG_LOCALVERSION=/ s/=\"[^\"]*\"/=\"${KMI_LOCAL}\"/" ./arch/arm64/configs/gki_defconfig 2>/dev/null || true
             else
               SUFFIX="-${KMI_TAG}-g${GHASH}-${BID}"
