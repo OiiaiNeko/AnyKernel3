@@ -849,7 +849,7 @@ jobs:
           fi
 
           if [ "${{ inputs.kernel_version }}" = "6.1" ]; then
-            sed -i 's/CONFIG_MODULE_SIG=y/CONFIG_MODULE_SIG=n/g' common/arch/arm64/configs/gki_defconfig
+            sed -i 's/CONFIG_MODULE_SIG=y/CONFIG_MODULE_SIG=n/g' ./common/arch/arm64/configs/gki_defconfig
           fi
 
           if [ "${{ inputs.android_version }}" = "android14" ] || [ "${{ inputs.android_version }}" = "android15" ]; then
