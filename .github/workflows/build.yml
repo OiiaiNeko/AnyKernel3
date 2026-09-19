@@ -848,6 +848,10 @@ jobs:
             sed -i 's/CONFIG_ZRAM=m/CONFIG_ZRAM=y/g' "$CONFIG_FILE"
           fi
 
+          if [ "${{ inputs.kernel_version }}" = "6.1" ]; then
+            sed -i 's/CONFIG_MODULE_SIG=y/CONFIG_MODULE_SIG=n/g' "$CONFIG_FILE"
+          fi
+
           if [ "${{ inputs.android_version }}" = "android14" ] || [ "${{ inputs.android_version }}" = "android15" ]; then
             sed -i 's/"drivers\/block\/zram\/zram\.ko",//g; s/"mm\/zsmalloc\.ko",//g' "$KERNEL_ROOT/common/modules.bzl"
           fi
